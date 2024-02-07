@@ -1,7 +1,7 @@
 # Medidas de 10 Aplicativos con OZM V2 con sólo armónicos impares
 
 
-En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos impares.Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares.Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.
+En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos pares.Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares.Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.
 
 **DEBIDO A SU TAMAÑO, POR SU EXTENSION NO ESTAN DISPONIBLES LOS FICHEROS DE DATOS EN FROMATO CSV EN ESTE REPOSITORIO EN CONCRETO ASI COMO EL DATASET, PERO SI ESTA DISPONIBLE EN EL RESPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS.**
 
