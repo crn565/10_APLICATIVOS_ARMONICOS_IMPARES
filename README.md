@@ -1,14 +1,12 @@
-*10_APLICATIVOS_ARMONICOS_IMPARES*
-
-*DATOS DE 10 APLICATIVOS CON OZM V3 DESPRECIANDO ARMONICOS PARES*
+**REPOSITORIO DE 10 APLICATIVOS MAS EL AGREGADO MEDIANTE OZM V2 INCLUYENDO SÓLO ARMONICOS IMPARES**
 
 **En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos impares.**
 
-**Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares)**
+**Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares.**
 
-**Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK disponible también en Github, así como también los ficheros para generar el nuevo dataset que no incluye los armónicos pares).**
+**Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.**
 
-**DEBIDO A SU TAMAÑO, POR SU EXTENSION NO ESTAN DISPONIBLES LOS FICHEREOS DE DATOS EN FROMATO CSV EN ESTE REPOSITORIO EN CONCRETO, PERO SI ESTA DISPONIBLE EN EL RESPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS.**
+**DEBIDO A SU TAMAÑO, POR SU EXTENSION NO ESTAN DISPONIBLES LOS FICHEREOS DE DATOS EN FROMATO CSV EN ESTE REPOSITORIO EN CONCRETO ASI COMO EL DATASET, PERO SI ESTA DISPONIBLE EN EL RESPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS.**
 
 *Nuestro objetivo es proporcionar a los investigadores de NILM nuevos repositorios de datos para ampliar el abanico existente. Dado que estos nuevos conjuntos de datos pueden contener más de 150 variables eléctricas registradas a alta frecuencia en diferentes aplicaciones de uso cotidiano, al ofrecer esta amplia gama de datos, esperamos impulsar y mejorar las investigaciones en el campo del NILM.*
 
