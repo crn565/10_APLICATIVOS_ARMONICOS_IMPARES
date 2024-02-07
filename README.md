@@ -3,18 +3,13 @@
 ****REPOSITORIO DE 10 APLICATIVOS MAS EL AGREGADO MEDIANTE OZM V2 INCLUYENDO SÓLO ARMONICOS IMPARES****
 
 
-En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos impares.
+En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos impares.Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares.Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.
 
-Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares.
-
-Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.
-
-**DEBIDO A SU TAMAÑO, POR SU EXTENSION NO ESTAN DISPONIBLES LOS FICHEREOS DE DATOS EN FROMATO CSV EN ESTE REPOSITORIO EN CONCRETO ASI COMO EL DATASET, PERO SI ESTA DISPONIBLE EN EL RESPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS.**
+**DEBIDO A SU TAMAÑO, POR SU EXTENSION NO ESTAN DISPONIBLES LOS FICHEROS DE DATOS EN FROMATO CSV EN ESTE REPOSITORIO EN CONCRETO ASI COMO EL DATASET, PERO SI ESTA DISPONIBLE EN EL RESPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS.**
 
 Nuestro objetivo es proporcionar a los investigadores de NILM nuevos repositorios de datos para ampliar el abanico existente. Dado que estos nuevos conjuntos de datos pueden contener más de 150 variables eléctricas registradas a alta frecuencia en diferentes aplicaciones de uso cotidiano, al ofrecer esta amplia gama de datos, esperamos impulsar y mejorar las investigaciones en el campo del NILM.
 
 En este repositorio usamos 3 unidades OZM v2 que nos permiten registrar 150 medidas eléctricas en tiempo real de 10 dispositivos más el agregado, pero en este caso solo usaremos los armónicos impares.
-
 A continuación, pues si más dilación, se expone de forma genérica las conclusiones principales de tomar solo los armónicos impares, despreciando todos los armónicos o tomando todos ellos (pares e impares).
 
 
