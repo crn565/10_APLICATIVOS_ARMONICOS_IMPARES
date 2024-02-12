@@ -1,7 +1,7 @@
 # Medidas de 10 Aplicativos con OZM V2 con sólo armónicos impares
 
 
-En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos pares usaando la nueva version de  oVm v2 ( versión trifásica de oZM). 
+En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos pares usando la nueva version de  oVm v2 (versión trifásica de oZm). 
 
 
 Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares. Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.
