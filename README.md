@@ -24,6 +24,7 @@ ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTU
 
 
 For the unbundling process with the OZM V2 smart meters (three-phase version of the OZM) we will use the NILMTK Toolkit, whose flow can be seen in the following illustration.
+
 ![Diagrama Descripción generada automáticamente](media/ae003a4fce3933cef4ec0c557d516ceb.png)
 
 Figure 2-NILMTK flow diagram
@@ -92,6 +93,7 @@ Normally, NILMTK uses standardised DS formats, but due to the exclusivity of the
 Figure 4-Metadata file structure
 
 As each csv file is obtained in the previous phase from the OZM files, it is necessary to number them, with number 1 corresponding to the main meter. To do this, the new function accesses all the aforementioned measurement data files located in the input folder "/electricity/", using the labels.csv file, a process that is shown in Illustration 5.
+
 ![](media/6ae09e667f0eab524fc770ce3f816fba.png)
 
 Figure 5-Data file structure
@@ -111,6 +113,7 @@ Once all the measurement files have been processed, we proceed to merge them in 
 
 
 Once the new DS is finally created, we can perform a pre-analysis of the data, being especially interesting to represent the fraction of energy consumption of each device.
+
 ![Gráfico, Gráfico circular Descripción generada automáticamente](media/c55b5209b66b10dcb86ea5bcde9745ba.png)
 
 Figure 6- Representation of measurements
@@ -122,6 +125,7 @@ It is also interesting to look at the voltage, power and current graphs for all 
 Table 2-Data of all meters
 
 Finally, in this study it is necessary to study the correlation of the data, as well as its relation to possible changes in sampling.
+
 ![Gráfico, Histograma Descripción generada automáticamente](media/f3a4da44a09f9489b6988dd032b63af2.png)
 
 Figure 7-Graph ot autocorrelation
@@ -145,6 +149,7 @@ Finally, after analysing the data, we will divide the DS into **training set, va
 
 
 Once the training model is defined, thanks to the fact that NILMTK implements the two desegregation algorithms, we will run the two algorithms CO and FHMM in different sampling time intervals using three different filling methods (First, Mean and Median), saving the generated models in H5 format. Once all the options have been computed, we select the best evaluated model in the validation stage and we will be able to disaggregate the model.
+
 ![Gráfico, Gráfico de barras, Histograma Descripción generada automáticamente](media/5c356e3a7720f282ce9e44a7ec826bad.png)
 
 Figure 9- Disaggregate chart
@@ -183,6 +188,7 @@ C. Necessary improvements associated with increasing the number of applications
 
 
 The results obtained for 5 applications in previous experiments [20] have corroborated that NILMTK with the new OZM data responds very well for 5 applications with three hours of sampling, obtaining excellent metrics (incidentally, similar with both CO and FHMM) using optimal sampling times between 1sec and 30sec and without specific computational needs to process the Dataset (especially with FHMM).
+
 ![Tabla Descripción generada automáticamente](media/297c59ec44c1b7470918f21972f879d2.png)
 
 Tabla 5-Results for 5 apliances
@@ -191,11 +197,13 @@ Unfortunately, as the number of applications increases, so does the complexity o
 
 
 Given that the F1-score metric measures the overall accuracy of the classification of electrical devices, if we compare it for different applications and in different experiments, it will give us an idea of the accuracy in the classification of devices in general, which can be seen in the following graph.
+
 ![Gráfico, Gráfico de barras Descripción generada automáticamente](media/a01eede30d7e3c556a2bcdaca8ff4990.png)
 
 Tabla 6- Results of F1 in the experiments
 
 On the other hand, RMSE (Root Mean Squared Error) is a metric commonly used to assess the accuracy of a model in predicting the electricity consumption of individual appliances or the aggregate energy consumption of a household. For this purpose, RMSE measures the root mean square difference between predicted and actual energy consumption values, and is expressed in the same units as the energy consumption data. A high RMSE value in NILMTK indicates that the model does not accurately predict the energy consumption of the appliances or the household, which means that the predicted values are far away from the actual values.
+
 ![Gráfico, Gráfico de barras Descripción generada automáticamente](media/a525306d9ba678c40261f40d2690bff8.png)
 
 Tabla 7- Results of RMSE in the experiments
@@ -204,21 +212,25 @@ In general, a low RMSE value indicates that the model predicts the power consump
 
 
 As an example of the fluctuations that can occur due to noise, misalignment of the current sensor, or current sensor failure, we reproduce here the power measurements of 25/01/2023 of the hoover where 7056 measurements with clearly erroneous negative power (marked in yellow) were observed.
+
 ![Gráfico Descripción generada automáticamente](media/a580ca601dc1b012a274e27953f9dca2.png)
 
 Figure 10-Evolution of power for vacuum cleaner
 
 This same result, thanks to the graphical tools provided by NILMTK, can be seen differentiated for voltage, power (active or reactive) and current:
+
 ![Gráfico Descripción generada automáticamente](media/9dd979458ced15e0f5778ee5a09d0d33.png)
 
 Figure 11-Power, current and voltage for vac
 
 If we finally compare the main metrics with the successive improvements made in successive experiments, such as sample time extension, electrical noise reduction, sensor switching and improved alignment of active phases in split-core sensors, we see significant signs of improvement.
+
 ![Gráfico, Gráfico de líneas Descripción generada automáticamente](media/93e8658d5396e28e3b58b6c5bdb385d5.png)
 
 Figure 12- Improvement of metrics in the different experiments
 
 As the number of applicatives in the training is increased using the combinatorial algorithm there are no problems even with very small sampling times, but with FHMM there can be significant difficulties in running the algorithm with the new dense data set, which requires either reducing the training time or reducing the sampling time (or even reducing the number of applicatives), as illustrated in the table below.
+
 ![](media/6302c2338200f183cc06be7770ecd77a.emf)
 
 Table 8- Training possibilities with FHMM
