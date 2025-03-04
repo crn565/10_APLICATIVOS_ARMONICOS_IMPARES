@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/nilmtk/nilmtk.svg?branch=master)](https://travis-ci.org/nilmtk/nilmtk) [![Install with conda](https://anaconda.org/nilmtk/nilmtk/badges/installer/conda.svg)](https://anaconda.org/nilmtk/nilmtk) [![conda package version](https://anaconda.org/nilmtk/nilmtk/badges/version.svg)](https://anaconda.org/nilmtk/nilmtk)
 
+['Apache License 2.0', 'apache-2.0']
+
+
+
 # Measurements of 10 Applicatives with OZM V2 with only odd harmonics
 
 
