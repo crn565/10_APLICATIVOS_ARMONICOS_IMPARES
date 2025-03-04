@@ -1,18 +1,23 @@
-# Medidas de 10 Aplicativos con OZM V2 con sólo armónicos impares
+# Measurements of 10 Applicatives with OZM V2 with only odd harmonics
 
 
-En este repositorio (10_APLICATIVOS_ARMONICOS_IMPARES) se analiza el impacto de solo tomar los armónicos impares despreciando por tanto los armónicos pares usando la nueva version de  oVm v2 (versión trifásica de oZm). 
 
 
-Destacar que en los cuadernos de Jupyter Notebook no solo está el código en Python sino también los resultados de ejecutar sobre el dataset DSUALM10H donde se han despreciado los armónicos pares. Asimismo, mencionar que para ejecutar este código necesitamos tener instalado el toolkit NILMTK (disponible también en Github), así como también disponer del nuevo dataset que ya no incluye los armónicos pares.
+In this repository (10_APPLICATIVE_ARMONIC_IMPARES) the impact of only taking the odd harmonics and disregarding the even harmonics is analysed using the new version of oVm v2 (three phase version of oZm).
 
 
-**DEBIDO A SU TAMAÑO, POR SU EXTENSION NO ESTAN DISPONIBLES LOS FICHEROS DE DATOS EN FROMATO CSV EN ESTE REPOSITORIO EN CONCRETO ASI COMO EL DATASET, PERO SI ESTA DISPONIBLE EN EL RESPOSITORIO DSUALM10H EL DATASET COMPLETO CON TODOS LOS ARMONICOS.**
 
-Nuestro objetivo es proporcionar a los investigadores de NILM nuevos repositorios de datos para ampliar el abanico existente. Dado que estos nuevos conjuntos de datos pueden contener más de 150 variables eléctricas registradas a alta frecuencia en diferentes aplicaciones de uso cotidiano, al ofrecer esta amplia gama de datos, esperamos impulsar y mejorar las investigaciones en el campo del NILM.
 
-En este repositorio usamos 3 unidades OZM v2 que nos permiten registrar 150 medidas eléctricas en tiempo real de 10 dispositivos más el agregado, pero en este caso solo usaremos los armónicos impares.
-A continuación, pues si más dilación, se expone de forma genérica las conclusiones principales de tomar solo los armónicos impares, despreciando todos los armónicos o tomando todos ellos (pares e impares).
+It should be noted that in the Jupyter Notebook there is not only the Python code but also the results of running the DSUALM10H dataset where the even harmonics have been neglected. Also, to run this code we need to have the NILMTK toolkit installed (also available in Github), as well as the new dataset that no longer includes the even harmonics.
+
+**DUE TO ITS SIZE, THE CSV FROMATO DATA FILES ARE NOT AVAILABLE IN THIS PARTICULAR REPOSITORY AS WELL AS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS IS AVAILABLE IN THE DSUALM10H REPOSITORY** DUE TOITS SIZE, THE DATASET IS NOT AVAILABLE IN THIS PARTICULAR REPOSITORY AS WELL AS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS IS AVAILABLE IN THE DSUALM10H REPOSITORY** DUE TOITS SIZE.
+
+
+Our aim is to provide NILM researchers with new data repositories to extend the existing range. As these new datasets can contain more than 150 electrical variables recorded at high frequency in different everyday applications, by offering this wide range of data, we hope to boost and improve NILM research.
+
+
+In this repository we use 3 OZM v2 units which allow us to record 150 real-time electrical measurements from 10 devices plus the aggregate, but in this case we will only use the odd harmonics.
+In the following, without further ado, the main conclusions of taking only the odd harmonics, disregarding all harmonics or taking all of them (even and odd) are presented in a generic way.
 
 
 **ARQUITECTURA**
@@ -23,49 +28,64 @@ Para el proceso de desagregación con los medidores inteligentes OZM V2 (versió
 
 Figure 2-NILMTK flow diagram
 
-1.  **Generación de los nuevos DS**
+1. **Generation of the new DSs**.
 
-Los modelos presentados en este estudio emplean los registros de múltiples horas de funcionamiento de diversos dispositivos utilizando la API OZM, para lo cual usamos tres dispositivos OZM trifásicos con objeto de obtener 12 canales de medida reservando uno de estos para el agregado.
+
+The models presented in this study employ the multiple operating hour records of various devices using the OZM API, for which we use three three-phase OZM devices to obtain 12 measurement channels, reserving one of these for aggregation.
 
 ![Diagrama Descripción generada automáticamente](media/64ff0f26702e07a364d4358738a2d4d0.png)
 
 Figure 3 - Schematic diagram of OZM's connections with the applications.
 
-Los aplicativos usados en el experimento son los siguientes:
+The applications used in the experiment are the following:
+
 
 1 -Main
 
-2 - Electric Furnace (Horno)
 
-3- Microwave (Micro Onda)
+2 - Electric Furnace
+
+
+3- Microwave 
+
 
 4 - Television
 
-5 - Bulb (bombilla)
 
-6 - Vacuum Cleaner (Aspiradora)
+5 - Bulb
 
-7- Electric Space Heater (Radiator de aceite)
 
-8 - Electric Shower Heater (Calentador de agua)
+6 - Vacuum Cleaner 
 
-9 - Fan (Ventilador)
 
-10 - Fridge (refrigerador)
+7 - Electric Space Heater 
 
-11 - Freezer (congelador)
 
-Los datos recolectados por los OZM’s se almacenan en archivos con 160 campos de datos. Sin embargo, no todos estos campos son relevantes en todas las fases de este estudio, por lo tanto, es necesario adaptarlos para su uso en NILMTK [1].
+8 - Electric Shower Heater 
 
-Como primer paso, se realizará un análisis preliminar de los archivos de datos o preprocesado de los datos, donde se descomprimirán todos los ficheros de medidas desde el formato *parquet* al formato csv, añadiendo una cabecera con los nombres de las medidas y sustituyendo los valores angulares de los armónicos por el módulo. Asimismo, se realiza un análisis de fechas y horas, dado que puede haber desfases en los tres campos de fechas devueltos por ozm (*FistTimestamp, OriginaTimestamp* y *Time*). Finalmente, para cada fichero csv se reorganizan las cabeceras y eliminan caracteres no deseados.
+
+9 - Fan
+
+
+10 - Fridge
+
+
+11 - Freezer
+
+The data collected by the OZMs are stored in files with 160 data fields. However, not all of these fields are relevant in all phases of this study, therefore, it is necessary to adapt them for use in NILMTK [1].
+
+
+As a first step, a preliminary analysis of the data files or pre-processing of the data will be performed, where all the measurement files will be decompressed from the *parquet* format to the csv format, adding a header with the names of the measurements and substituting the angular values of the harmonics by the module. Also, a date and time analysis is performed, since there may be mismatches in the three date fields returned by ozm(*FistTimestamp, OriginaTimestamp* and *Time*). Finally, for each csv file, the headers are reorganised and unwanted characters are removed.
 
 ![Interfaz de usuario gráfica, Texto, Aplicación Descripción generada automáticamente con confianza media](media/b6d729bf82d005c27e0f5052f1fd0315.png)
 
 Table 1- Different dates generated by oZM
 
-La siguiente tarea de carga y análisis de los datos, consiste principalmente en convertir los diferentes archivos de medidas preprocesados en la fase anterior junto a los metadatos, en un único archivo en formato HDF5, archivo que se almacenará en la carpeta de ejecución [2].
 
-Normalmente, NILMTK utiliza formatos estandarizados de DS, pero debido a la exclusividad de los datos proporcionados por OZM, se necesita un nuevo conversor para los datos. Para esto, se han creado un nuevo convertidor, así como una nueva función *convert_ualm* para cargar los ficheros de medidas en formato csv de los OZM al nuevo DS en formato H5. Para ello en el directorio de NILMTK de los convertidores, no solo se incluirá el nuevo código Python del convertidor (basado en el convertidor IAWE), sino que también se creará un subdirectorio en "/metadata/" que contendrán los archivos de metadatos en formato YAML. La Figura 4 muestra la configuración de todos los archivos necesarios para el nuevo convertidor, así como la estructura de directorios requerida.
+The next task of loading and analysing the data consists mainly of converting the different measurement files preprocessed in the previous phase together with the metadata into a single file in HDF5 format, which will be stored in the run folder [2].
+
+
+Normally, NILMTK uses standardised DS formats, but due to the exclusivity of the data provided by OZM, a new converter for the data is needed. For this, a new converter has been created, as well as a new function *convert_ualm* to load the measurement files in csv format from the OZM to the new DS in H5 format. For this purpose, in the NILMTK directory of the converters, not only the new Python code of the converter (based on the IAWE converter) will be included, but also a subdirectory will be created in "/metadata/" containing the metadata files in YAML format. Figure 4 shows the configuration of all the files needed for the new converter, as well as the required directory structure.
 
 ![](media/f0fc612321c8838d7279158e7cde4234.png)
 
@@ -77,19 +97,21 @@ Como cada fichero csv es obtenido en la fase de anterior a partir de los fichero
 
 Figure 5-Data file structure
 
-Ubicados los ficheros de datos, lo primero es invocar al conversor llamando a la nueva función **convert_ualm**, pasándole la ruta de los metadatos y el nuevo nombre del DS. Básicamente el nuevo convertidor realiza los siguientes pasos para cada fichero de medidas:
+Once the data files are located, the first step is to invoke the converter by calling the new function **convert_ualm**, passing it the metadata path and the new DS name. Basically the new converter performs the following steps for each measurement file:
 
--   Lectura del fichero numerado.
--   Conversión a formato fecha del campo timestamp.
--   Carga del resto de columnas.
--   Sort-index.
--   Resample.
--   Re-indexación del fichero.
 
-Una vez se han procesado todos los ficheros de medidas, procedemos a unir éstos en formato yaml, para posteriormente añadir los metadatos y generar finalmente un nuevo DS en formato H5.
+- Reading of the numbered file.
+- Conversion to date format of the timestamp field.
+- Loading of the rest of the columns.
+- Sort-index.
+- Resample.
+- Re-indexing of the file.
 
-Creado finalmente el nuevo DS, podemos realizar un preanálisis de los datos, siendo especialmente interesante representar la fracción del consumo de energía de cada aparato.
 
+Once all the measurement files have been processed, we proceed to merge them in yaml format, to later add the metadata and finally generate a new DS in H5 format.
+
+
+Once the new DS is finally created, we can perform a pre-analysis of the data, being especially interesting to represent the fraction of energy consumption of each device.
 ![Gráfico, Gráfico circular Descripción generada automáticamente](media/c55b5209b66b10dcb86ea5bcde9745ba.png)
 
 Figure 6- Representation of measurements
@@ -106,15 +128,16 @@ Finalmente, en este estudio se hace necesario estudiar la correlación de los da
 
 Figure 7-Graph ot autocorrelation
 
-**Análisis, Preprocesamiento, Entrenamiento, Validación, Desagregación y Métricas**
+Analysis, Preprocessing, Training, Validation, Disaggregation, and Metrics** ** Once we have generated the new DS, we can use NILMTK implementations to perform a quick diagnosis of the DS.
 
-Una vez hemos generado el nuevo DS, podemos usar las implementaciones que dispone NILMTK para realizar un diagnóstico rápido del DS. Es especialmente interesante obtener el perfil de la potencia en un gráfico de área de los aplicativos (Ilustración 7).
+
+Once we have generated the new DS, we can use the implementations available in NILMTK to perform a quick diagnosis of the DS. It is particularly interesting to obtain the power profile in an area graph of the applications (Illustration 7).
 
 ![Gráfico, Gráfico de barras Descripción generada automáticamente](media/f80b6e170f22320613d24d9fdc1bdf5b.png)
 
 Figure 8- Voltage profile
 
-En esta etapa también se obtiene el perfil del voltaje, se hace el cálculo posibles secciones faltantes o se descartan aquellas muestras con valores muy bajos aplicando filtros. Asimismo, es interesante obtener el registro de actividad que mostramos a continuación.
+At this stage, the voltage profile is also obtained, and possible missing sections are calculated or samples with very low values are discarded by applying filters. It is also interesting to obtain the activity log shown below.
 
 ![Texto Descripción generada automáticamente](media/387c5ae802a667bc9d8f4e9f93075602.png)
 
@@ -128,70 +151,71 @@ Definido el modelo de entrenamiento, gracias a que NILMTK implementa los dos alg
 
 Figure 9- Disaggregate chart
 
-Finalmente, una vez desagregado las diferentes aplicativos, toca la fase de obtención de métricas para comprobar cómo ha respondido el mejor modelo, y sobre todo para decidir, si es necesario con los resultados obtenidos cambiar éste por otro más eficiente. Para facilitar esta labor, en esta última etapa precisamente NILMTK implementa numerosas herramientas gráficas y textuales para ayudarnos en la selección del modelo que nos ofrezca las mejores métricas posibles.
+Finally, once the different applications have been disaggregated, it is time to obtain metrics to check how the best model has performed and, above all, to decide whether it is necessary, based on the results obtained, to change it for a more efficient one. To facilitate this task, in this last stage NILMTK implements numerous graphical and textual tools to help us in the selection of the model that offers the best possible metrics.
 
-Un ejemplo de gráfico para ayudarnos a seleccionar el método de relleno es el siguiente que no muestra el comportamiento de las métricas F1, EAE, MNEAP y RMSE para la ejecución del algoritmo combinatorio con diferentes métodos de relleno.
+
+An example of a graph to help us select the filling method is the following one, which shows the behaviour of the metrics F1, EAE, MNEAP and RMSE for the execution of the combinatorial algorithm with different filling methods.
 
 ![Una captura de pantalla de un celular Descripción generada automáticamente con confianza media](media/22f409336d75b20d796d9dc9b22aebb5.png)
 
 Table 4- Final results of CO
 
-**Medidas definitivas finales con OZM tomadas el 6 de junio de 2023**
+Final measurements with OZM taken on 6 June 2023**Final measurements with OZM taken on 6 June 2023** Finalmeasurements with OZM taken on 6 June 2023
 
-Comenzaron el día 2023-06-09 a las 09:34:38+02:00 y terminaron el día 2023-06-09 a las 13:36:19+02:00 en el Laboratorio de Electrotecnia de la Escuela de Ingeniería Industrial de la Universidad de ALmeria. También se consideran medidas unitarias del día 6 del 6. Las Medidas se realizan con 3 OpenZMeter Trifásicos (cada uno con 4 canales de medida) conformando así en total 11 canales de medida que se distribuyen en los 10 aplicativos, más el agregado.
 
-En este repositorio se analizarán todas las medidas eléctricas por medio de 3 OpenPowerMeter (OzM) con soporte de 4 canales medidor (en total 12 canales de medidas eléctricas), conformando así en total 11 canales útiles de los cuales 10 son para aplicativos, uno al agregado, y una última vacante realizándose todas las medidas estas durante 4 horas a la máxima frecuencias de muestreo.
+They started on 2023-06-09 at 09:34:38+02:00 and finished on 2023-06-09 at 13:36:19+02:00 in the Electrical Engineering Laboratory of the School of Industrial Engineering of the University of ALmeria. The measurements are also considered unitary measurements of day 6 of 6. The measurements are carried out with 3 three-phase OpenZMeters (each one with 4 measurement channels), making a total of 11 measurement channels that are distributed in the 10 applications, plus the aggregate.
 
-Todo el proceso se realiza en los cuadernos adjuntos a este repositorio fundamentalmente versando en el análisis de las medidas de 10 aplicativos incluyendo transitorios hasta el orden 150 de tensión, corriente y potencia.
 
-Las medidas corresponden a W, VAR, VA, f, VLN, PF y A, más los ARMONICOS hasta el orden 150 de W, V y A, todas con una marca de tiempo (Timestamp) de 13 dígitos tipo UNIX Epox.
+In this repository all the electrical measurements will be analysed by means of 3 OpenPowerMeter (OzM) with support of 4 channels meter (in total 12 channels of electrical measurements), conforming this way in total 11 useful channels of which 10 are for applications, one to the aggregate, and a last vacancy being realised all the measurements these during 4 hours to the maximum frequencies of sampling.
+The whole process is carried out in the notebooks attached to this repository, mainly dealing with the analysis of the measurements of 10 applications including transients up to order 150 of voltage, current and power.
 
-Para el entrenamiento se han definido tres periodos:
 
+The measurements correspond to W, VAR, VA, f, VLN, PF and A, plus the ARMONICS up to order 150 of W, V and A, all with a 13-digit UNIX Epox timestamp.
+
+
+Three periods have been defined for the training:
 -   TRAIN(start="2023-06-09 09:34:00", end="2023-06-09 12:54:00")
 -   VAL(start="2023-06-09 12:55:00", end="2023-06-09 13:36:00")
 -   TEST (start="2023-06-06 11:19:19", end="2023-06-06 11:40:28")
 
-Estos datos se entrenaron, tanto con el algoritmo CO, como el algoritmo FHMM.
+These data were trained with both the CO algorithm and the FHMM algorithm.
 
-C. Mejoras necesarias asociadas al aumento del número de aplicativos
 
-Los resultados obtenidos para 5 aplicativos en experimentos previos [20] nos han corroborado que NILMTK con los nuevos datos de OZM responde muy bien para 5 aplicativos con tres horas de toma de muestras, obteniendo excelentes métricas (por cierto, similares tanto con CO como con FHMM) usando tiempos de muestreo óptimos entre 1 seg y 30seg y sin necesidades de cómputo específicas para procesar el Dataset (especialmente con FHMM).
+C. Necessary improvements associated with increasing the number of applications
 
+
+The results obtained for 5 applications in previous experiments [20] have corroborated that NILMTK with the new OZM data responds very well for 5 applications with three hours of sampling, obtaining excellent metrics (incidentally, similar with both CO and FHMM) using optimal sampling times between 1sec and 30sec and without specific computational needs to process the Dataset (especially with FHMM).
 ![Tabla Descripción generada automáticamente](media/297c59ec44c1b7470918f21972f879d2.png)
 
 Tabla 5-Results for 5 apliances
 
-Desgraciadamente a medida que se aumenta el número de aplicativos, aumenta también la complejidad de procesar esta gran cantidad de datos con resultados aceptables. Prueba de ello, han sido las numerosas tentativas que se han realizado experimentalmente hasta llegar a la publicación del presente conjunto de datos.
+Unfortunately, as the number of applications increases, so does the complexity of processing this large amount of data with acceptable results. Proof of this has been the numerous attempts that have been made experimentally up to the publication of the present dataset.
 
-Dado que la métrica F1-score mide la precisión global de la clasificación de los dispositivos eléctricos, si la comparamos para diversos aplicativos y en diferentes experimentos estos nos van a dar una idea de la precisión en la clasificación de los dispositivos en general, lo cual podemos apreciar en la gráfica siguiente.
 
+Given that the F1-score metric measures the overall accuracy of the classification of electrical devices, if we compare it for different applications and in different experiments, it will give us an idea of the accuracy in the classification of devices in general, which can be seen in the following graph.
 ![Gráfico, Gráfico de barras Descripción generada automáticamente](media/a01eede30d7e3c556a2bcdaca8ff4990.png)
 
 Tabla 6- Results of F1 in the experiments
 
-Por otro lado, RMSE (Root Mean Squared Error) es una métrica utilizada habitualmente para evaluar la precisión de un modelo a la hora de predecir el consumo eléctrico de aparatos individuales o el consumo energético agregado de un hogar. Para ello el RMSE mide la diferencia cuadrática media entre los valores de consumo de energía predichos y los reales, y se expresa en las mismas unidades que los datos de consumo de energía. Un valor alto de RMSE en NILMTK indica que el modelo no predice con exactitud el consumo energético de los electrodomésticos o del hogar, lo cual significa que los valores predichos están muy alejados de los valores reales.
-
+On the other hand, RMSE (Root Mean Squared Error) is a metric commonly used to assess the accuracy of a model in predicting the electricity consumption of individual appliances or the aggregate energy consumption of a household. For this purpose, RMSE measures the root mean square difference between predicted and actual energy consumption values, and is expressed in the same units as the energy consumption data. A high RMSE value in NILMTK indicates that the model does not accurately predict the energy consumption of the appliances or the household, which means that the predicted values are far away from the actual values.
 ![Gráfico, Gráfico de barras Descripción generada automáticamente](media/a525306d9ba678c40261f40d2690bff8.png)
 
 Tabla 7- Results of RMSE in the experiments
 
-En general, un valor de RMSE bajo indica que el modelo predice mejor el consumo de energía, mientras que un valor de RMSE alto indica que el modelo tiene margen de mejora, lo cual podemos ver reflejado en el siguiente gráfico.
+In general, a low RMSE value indicates that the model predicts the power consumption better, while a high RMSE value indicates that the model has room for improvement, which can be seen in the graph below.
 
-Como ejemplo de las fluctuaciones que pueden llegar a producirse por ruido, mal alineamiento del sensor de corriente, o fallo de este, reproducimos aquí las medidas de potencia del 25/01/2023 de la aspiradora donde se observaron 7056 medidas con potencia negativa claramente erróneas (marcadas en amarillo).
 
+As an example of the fluctuations that can occur due to noise, misalignment of the current sensor, or current sensor failure, we reproduce here the power measurements of 25/01/2023 of the hoover where 7056 measurements with clearly erroneous negative power (marked in yellow) were observed.
 ![Gráfico Descripción generada automáticamente](media/a580ca601dc1b012a274e27953f9dca2.png)
 
 Figure 10-Evolution of power for vacuum cleaner
 
-Esto mismo resultado, gracias a las herramientas graficas que cuenta NILMTK lo podemos apreciar diferenciado para la tensión, potencias (activa o reactiva) y la corriente:
-
+This same result, thanks to the graphical tools provided by NILMTK, can be seen differentiated for voltage, power (active or reactive) and current:
 ![Gráfico Descripción generada automáticamente](media/9dd979458ced15e0f5778ee5a09d0d33.png)
 
 Figure 11-Power, current and voltage for vac
 
-Si finalmente comparamos las principales métricas con las mejoras sucesivas realizadas en sucesivos experimentos, como son la ampliación del tiempo de las muestras, la reducción del ruido eléctrico, cambio de sensores y la mejora en el alineamiento de las fases activas en los sensores de núcleo dividido, vemos como hay señales de mejora significativas.
-
+If we finally compare the main metrics with the successive improvements made in successive experiments, such as sample time extension, electrical noise reduction, sensor switching and improved alignment of active phases in split-core sensors, we see significant signs of improvement.
 ![Gráfico, Gráfico de líneas Descripción generada automáticamente](media/93e8658d5396e28e3b58b6c5bdb385d5.png)
 
 Figure 12- Improvement of metrics in the different experiments
@@ -202,70 +226,85 @@ A medida que se aumenta el número de aplicativos en el entrenamiento usando el 
 
 Table 8- Training possibilities with FHMM
 
-En la tabla 8 vemos como se hace patente que para poder ejecutar FHMM con gran cantidad de muestras de alta frecuencia, se hace necesario o bien reducir el periodo de entrenamiento o bien aumentar el sampling para producir un modelo satisfactorio.
+Table 8 shows that in order to run FHMM with large numbers of high-frequency samples, it is necessary to either reduce the training period or increase the sampling to produce a satisfactory model.
 
-**4. RESULTADOS**
 
-NILMTK cuenta con el cálculo de métricas de evaluación por medio del uso del MeterGroup para la validación de los resultados mediante el set de validación. Es preciso ejecutar para ello, sobre los modelos obtenidos, diferentes métricas como son FEAC, F1, EAE, MNEAP y RMSE, que para el mejor modelo (CO con sampling de 1seg) nos da una salida algo similar a la Tabla 9.
+**4. RESULTS**
+
+
+NILMTK counts on the calculation of evaluation metrics through the use of the MeterGroup for the validation of the results by means of the validation set. It is necessary to run different metrics such as FEAC, F1, EAE, MNEAP and RMSE on the models obtained, which for the best model (CO with 1sec sampling) gives us an output similar to Table 9.
 
 ![Tabla Descripción generada automáticamente](media/2163dc9c3c3c2e4bc4f7349a0a5fa103.png)
 
 Table 9-Metrics of CO for 10 apliances
 
-Es decir, obtenemos una puntuación para F1-Score de Media de 45.41, un valor excelente de EAE (0 de media), un valor muy bajo perfecto de MNEAP (media 1.9809) y un valor aceptable de RMSE (media 372.8472).
+That is, we obtain a score for F1-Score of Mean of 45.41, an excellent value of EAE (mean 0), a very low perfect value of MNEAP (mean 1.9809) and an acceptable value of RMSE (mean 372.8472).
 
-**Resumen de resultados sin armónicos**
 
-En general la eliminación de armónicos para el mismo periodo entrenamiento, mismo algoritmo (CO) y un periodo de sampling de 1seg, empeora levemente casi todas las métricas para casi todos los aplicativos. En la siguiente tabla podemos ver los resultados:
+Summary of results without harmonics**Summary of results without harmonics**Summary of results without harmonics** Summaryof results without harmonics
 
+
+In general, the elimination of harmonics for the same training period, same algorithm (CO) and a sampling period of 1sec, slightly worsens almost all metrics for almost all applications. In the following table we can see the results:
 ![Tabla Descripción generada automáticamente](media/0508e1d7129202cdea3b8468637f0dd4.png)
 
 Table 13- Summary metrics without harmonics
 
-Es decir, obtenemos una puntuación para F1-Score de Media 47,29 (algo mejor que incorporando los armónicos), un valor bastante peor de EAE (0,472 de media), un valor bajo de MNEAP (media 6,0115) pero peor que incluyendo armónicos cuya media era de 1.9809) y un valor algo peor de RMSE (media 382,2369 frente a 372.8472).
+That is, we obtain a score for F1-Score of Mean 47.29 (somewhat better than incorporating harmonics), a much worse value for EAE (mean 0.472), a low value for MNEAP (mean 6.0115) but worse than including harmonics (mean 1.9809) and a somewhat worse value for RMSE (mean 382.2369 vs. 372.8472).
 
-**Resumen de resultados sin armónicos impares**
+**Summary of results without odd harmonics**.
 
-En general la incorporación de solo los armónicos pares despreciando los armónicos impares para el mismo periodo de entrenamiento, mismo algoritmo (CO) y un periodo de sampling de 1seg, NO mejora las métricas para casi todos los aplicativos. En la siguiente tabla podemos ver los resultados:
+
+In general, the incorporation of only the even harmonics disregarding the odd harmonics for the same training period, same algorithm (CO) and a sampling period of 1sec, does NOT improve the metrics for almost all the applications. In the following table we can see the results:
 
 ![Interfaz de usuario gráfica, Aplicación Descripción generada automáticamente](media/f2965dc14f31dfad59bb853854b8504b.png)
 
 Table 11- Metrics for even harmonics only
 
-Es decir, obtenemos una puntuación para F1-Score de Media 44,01 (peor que con armónicos o sin ellos), un valor excelente de EAE (0 de media), un valor muy bajo de MNEAP (media 2,2877) y un valor aceptable de RMSE (media 401,3312) pero bastante peor que el valor obtenido con armónicos de 372.8472.
 
-**Comparación con otros DS**
+That is, we obtain a score for F1-Score of Mean 44.01 (worse than with or without harmonics), an excellent value for EAE (mean 0), a very low value for MNEAP (mean 2.2877) and an acceptable value for RMSE (mean 401.3312) but much worse than the value obtained with harmonics of 372.8472.
 
-Para el DS de IAWE los resultados nos evidencian que el algoritmo más eficiente para este DS es el combinatorio (CO) usando el método Mean y **periodo 10 minutos, frente sólo al 1 segundo necesarios con los datos del OZM**.
+
+
+
+Comparison with other DS**Comparison with other DS** Comparison with other DS** Comparisonwith other DS** Comparisonwith other DS
+
+
+For the IAWE DS, the results show that the most efficient algorithm for this DS is the combinatorial (CO) algorithm using the Mean method and **10-minute period, compared to only the 1 second needed with the OZM**data.
 
 ![Tabla Descripción generada automáticamente](media/8ebd0ec88d9f344dac9a694ecfd873f8.png)
 
 Table 14- Results of IAWE
 
-Por otro lado, los resultados obtenidos para el DS de DEPS nos evidencian un mejor rendimiento para el algoritmo CO, método Mean, pero **a un tiempo de muestreo de media hora, frente sólo al 1 segundo necesario con los datos del OZM**.
+
+On the other hand, the results obtained for the DS of DEPS show a better performance for the CO algorithm, Mean method, but **at a sampling time of half an hour, compared to only 1 second for the OZM**data.
 
 ![Tabla Descripción generada automáticamente](media/8a92a55f7a375c6f472b1acb1a9a86a7.png)
 
 Figure 15-Results of DEPS
 
-Asimismo, si comparamos GT y Pred para el DS de DEPS, las divergencias son muy importantes, oscilando entre 1,4%, 4,6% y 4,9% frente al 0 y 1,6% que tenemos en DSUAL.
+
+Likewise, if we compare GT and Pred for the DS of DEPS, the divergences are very important, ranging between 1.4%, 4.6% and 4.9% compared to 0 and 1.6% for DSUAL.
 
 ![Gráfico, Gráfico circular Descripción generada automáticamente](media/2b62711a9cf58ecc96ca66410a1d8862.png)
 
 Figure 16- Comparison GT with Pred for DEPS
 
-**V. CONCLUSIONES**
 
-En este trabajo en el ámbito de NILMTK, además de incorporar tanto las métricas como las herramientas disponibles en el toolkit, se ha incorporado como novedad, el nuevo formato de timestamp de 13 dígitos además de nuevos conversores y convertidores para las medidas obtenidas de OZM, de modo que así se elimina la barrera de entrada a todo aquel investigador que cuente con uno o varios OZM y desee acceder al NILM. Precisamente comparando los DS obtenidos (con o sin transitorios), se ha demostrado que el uso de armónicos puede mejorar el resultado de las métricas, dependiendo, eso sí, del aplicativo a considerar.
+**V. CONCLUSIONS**V. CONCLUSIONS **V. CONCLUSIONS **V. CONCLUSIONS **V. CONCLUSIONS
 
-Por otro lado, si comparamos los resultados de las métricas obtenidas sobre DSUALM o DSUALMT, frente a los DS de IAWE o DEPS los resultados son mucho peores en estos últimos, especialmente en cuanto al periodo de muestreo necesario. Destaca además el error mínimo en la desagregación en DSUALM, así como los mejores valores obtenidos para las métricas MNEAP y RMSE.
 
-**Publicaciones**
+In this work in the field of NILMTK, in addition to incorporating both the metrics and the tools available in the toolkit, the new 13-digit timestamp format has been incorporated as a novelty, as well as new converters and converters for the measurements obtained from OZM, thus eliminating the entry barrier for any researcher who has one or more OZMs and wishes to access the NILM. Precisely by comparing the SD obtained (with or without transients), it has been shown that the use of harmonics can improve the result of the metrics, depending, of course, on the application to be considered.
 
-Hay un artículo de mi autoría sobre el NILM que usa el hardware OZM monofásico en lugar del OZM v2:
+
+On the other hand, if we compare the results of the metrics obtained on DSUALM or DSUALMT, compared to the DS of IAWE or DEPS, the results are much worse in the latter, especially in terms of the sampling period required. The minimum error in the disaggregation in DSUALM also stands out, as well as the best values obtained for the MNEAP and RMSE metrics.
+
+**Publications**
+
+
+There is an article by me about the NILM using the single-phase OZM hardware instead of the OZM v2:
 
 -   C. Rodriguez-Navarro, A. Alcayde, V. Isanbaev, L. Castro-Santos, A. Filgueira-Vizoso, and F. G. Montoya, “DSUALMH- A new high-resolution dataset for NILM,” *Renewable Energy and Power Quality Journal*, vol. 21, no. 1, pp. 238–243, Jul. 2023, doi: 10.24084/repqj21.286.
 
-Asimismo, con el fin de hacer replicable todo este trabajo se ha desarrollado un nuevo multi contador abierto llamado OMPM esta publicada en la revista científica “Inventions:”
+Also, in order to make all this work replicable, a new open multi-counter called OMPM has been developed and is published in the scientific journal "Inventions".
 
 -   C. Rodríguez-Navarro, F. Portillo, F. Martínez, F. Manzano-Agugliaro, and A. Alcayde, “Development and Application of an Open Power Meter Suitable for NILM,” *Inventions*, vol. 9, no. 1, p. 2, Dec. 2023, doi: 10.3390/inventions9010002.
