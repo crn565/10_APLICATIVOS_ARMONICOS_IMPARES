@@ -299,7 +299,7 @@ Likewise, if we compare GT and Pred for the DS of DEPS, the divergences are very
 Figure 16- Comparison GT with Pred for DEPS
 
 
-**V. CONCLUSIONS**V. CONCLUSIONS **V. CONCLUSIONS **V. CONCLUSIONS **V. CONCLUSIONS
+**V. CONCLUSIONS**
 
 
 In this work in the field of NILMTK, in addition to incorporating both the metrics and the tools available in the toolkit, the new 13-digit timestamp format has been incorporated as a novelty, as well as new converters and converters for the measurements obtained from OZM, thus eliminating the entry barrier for any researcher who has one or more OZMs and wishes to access the NILM. Precisely by comparing the SD obtained (with or without transients), it has been shown that the use of harmonics can improve the result of the metrics, depending, of course, on the application to be considered.
