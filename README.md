@@ -10,7 +10,7 @@ In this repository (10_APPLICATIVE_ARMONIC_IMPARES) the impact of only taking th
 
 It should be noted that in the Jupyter Notebook there is not only the Python code but also the results of running the DSUALM10H dataset where the even harmonics have been neglected. Also, to run this code we need to have the NILMTK toolkit installed (also available in Github), as well as the new dataset that no longer includes the even harmonics.
 
-**DUE TO ITS SIZE, THE CSV FROMATO DATA FILES ARE NOT AVAILABLE IN THIS PARTICULAR REPOSITORY AS WELL AS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS IS AVAILABLE IN THE DSUALM10H REPOSITORY** DUE TOITS SIZE, THE DATASET IS NOT AVAILABLE IN THIS PARTICULAR REPOSITORY AS WELL AS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS IS AVAILABLE IN THE DSUALM10H REPOSITORY** DUE TOITS SIZE.
+**DUE TO ITS SIZE, THE CSV FORMAT DATA FILES ARE NOT AVAILABLE IN THIS PARTICULAR REPOSITORY AS WELL AS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS IS AVAILABLE IN THE DSUALM10H REPOSITORY** DUE TOITS SIZE, THE DATASET IS NOT AVAILABLE IN THIS PARTICULAR REPOSITORY AS WELL AS THE DATASET, BUT THE COMPLETE DATASET WITH ALL HARMONICS IS AVAILABLE IN THE DSUALM10H REPOSITORY** DUE TOITS SIZE.
 
 
 Our aim is to provide NILM researchers with new data repositories to extend the existing range. As these new datasets can contain more than 150 electrical variables recorded at high frequency in different everyday applications, by offering this wide range of data, we hope to boost and improve NILM research.
@@ -20,7 +20,7 @@ In this repository we use 3 OZM v2 units which allow us to record 150 real-time 
 In the following, without further ado, the main conclusions of taking only the odd harmonics, disregarding all harmonics or taking all of them (even and odd) are presented in a generic way.
 
 
-ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE
+**ARCHITECTURE**
 
 
 For the unbundling process with the OZM V2 smart meters (three-phase version of the OZM) we will use the NILMTK Toolkit, whose flow can be seen in the following illustration.
