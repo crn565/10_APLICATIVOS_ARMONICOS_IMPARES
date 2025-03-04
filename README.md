@@ -20,10 +20,10 @@ In this repository we use 3 OZM v2 units which allow us to record 150 real-time 
 In the following, without further ado, the main conclusions of taking only the odd harmonics, disregarding all harmonics or taking all of them (even and odd) are presented in a generic way.
 
 
-**ARQUITECTURA**
+ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE**ARCHITECTURE
 
-Para el proceso de desagregación con los medidores inteligentes OZM V2 (versión trifásica del OZM) usaremos el Toolkit NILMTK, cuyo flujo podemos ver en la ilustración siguiente.
 
+For the unbundling process with the OZM V2 smart meters (three-phase version of the OZM) we will use the NILMTK Toolkit, whose flow can be seen in the following illustration.
 ![Diagrama Descripción generada automáticamente](media/ae003a4fce3933cef4ec0c557d516ceb.png)
 
 Figure 2-NILMTK flow diagram
@@ -91,8 +91,7 @@ Normally, NILMTK uses standardised DS formats, but due to the exclusivity of the
 
 Figure 4-Metadata file structure
 
-Como cada fichero csv es obtenido en la fase de anterior a partir de los ficheros de los OZM, es necesario numerarlos, siendo el nº 1 el correspondiente al medidor principal. Para ello, la nueva función accede a todos los citados ficheros de datos de medidas localizados en la carpeta de entrada “/electricity/”, usando para ello el fichero de etiquetas labels.csv, proceso que representamos en la Ilustración 5.
-
+As each csv file is obtained in the previous phase from the OZM files, it is necessary to number them, with number 1 corresponding to the main meter. To do this, the new function accesses all the aforementioned measurement data files located in the input folder "/electricity/", using the labels.csv file, a process that is shown in Illustration 5.
 ![](media/6ae09e667f0eab524fc770ce3f816fba.png)
 
 Figure 5-Data file structure
@@ -116,14 +115,13 @@ Once the new DS is finally created, we can perform a pre-analysis of the data, b
 
 Figure 6- Representation of measurements
 
-Es asimismo interesante observar los gráficos de tensión, potencias y corriente para todos los diferentes aplicativos, así como del agregado. No obstante, un gráfico muy aclaratorio, consiste en trazar los datos submedidos junto los datos del medidor principal.
+It is also interesting to look at the voltage, power and current graphs for all the different applications as well as the aggregate. However, a very informative graph is to plot the submetered data together with the data of the main meter.
 
 ![Gráfico, Histograma Descripción generada automáticamente](media/d23ff6bb98853429d031c72d602effa9.png)
 
 Table 2-Data of all meters
 
-Finalmente, en este estudio se hace necesario estudiar la correlación de los datos, así como su relación con posibles cambios en el muestreo.
-
+Finally, in this study it is necessary to study the correlation of the data, as well as its relation to possible changes in sampling.
 ![Gráfico, Histograma Descripción generada automáticamente](media/f3a4da44a09f9489b6988dd032b63af2.png)
 
 Figure 7-Graph ot autocorrelation
@@ -143,10 +141,10 @@ At this stage, the voltage profile is also obtained, and possible missing sectio
 
 Tabla 3-Registry of activity
 
-Finalmente analizados los datos, dividiremos el DS en **set de entrenamiento, set de validación y set de pruebas.** Para entrenar el modelo, usamos dos de los modelos de desagregación que existen disponibles en NILMTK, como son los algoritmos supervisados CO y FHMM, usando la señal de potencia activa de los dispositivos. Para ello, previamente además de cargar las librerías necesarias, definiremos el DS, y asociaremos las etiquetas asociadas a los electrodomésticos y finalmente definiremos el subconjunto de entrenamiento.
+Finally, after analysing the data, we will divide the DS into **training set, validation set and test set** To train the model, we use two of the disaggregation models available in NILMTK, such as the supervised algorithms CO and FHMM, using the active power signal of the devices. To do this, in addition to loading the necessary libraries, we will first define the DS, associate the labels associated with the appliances and finally define the training subset.
 
-Definido el modelo de entrenamiento, gracias a que NILMTK implementa los dos algoritmos de desegregación, ejecutaremos los dos algoritmos CO y FHMM en diferentes intervalos de tiempo de muestreo usando tres métodos diferentes de relleno (First, Mean y Median), salvando los modelos generados en formato H5. Una vez computadas todas las opciones, seleccionamos el mejor modelo evaluado en la etapa de validación y ya podremos desagregar el modelo.
 
+Once the training model is defined, thanks to the fact that NILMTK implements the two desegregation algorithms, we will run the two algorithms CO and FHMM in different sampling time intervals using three different filling methods (First, Mean and Median), saving the generated models in H5 format. Once all the options have been computed, we select the best evaluated model in the validation stage and we will be able to disaggregate the model.
 ![Gráfico, Gráfico de barras, Histograma Descripción generada automáticamente](media/5c356e3a7720f282ce9e44a7ec826bad.png)
 
 Figure 9- Disaggregate chart
@@ -220,8 +218,7 @@ If we finally compare the main metrics with the successive improvements made in 
 
 Figure 12- Improvement of metrics in the different experiments
 
-A medida que se aumenta el número de aplicativos en el entrenamiento usando el algoritmo combinatorio no hay problemas incluso con tiempos de sampling muy pequeños, pero con FHMM puede haber dificultades importantes a la hora de ejecutar el algoritmo con el nuevo denso conjunto de datos, para lo cual se hace necesario reducir el tiempo de entrenamiento o bien reducir el tiempo de sampling (o incluso reducir el número de aplicativos), tal y como se ilustra en la siguiente tabla.
-
+As the number of applicatives in the training is increased using the combinatorial algorithm there are no problems even with very small sampling times, but with FHMM there can be significant difficulties in running the algorithm with the new dense data set, which requires either reducing the training time or reducing the sampling time (or even reducing the number of applicatives), as illustrated in the table below.
 ![](media/6302c2338200f183cc06be7770ecd77a.emf)
 
 Table 8- Training possibilities with FHMM
